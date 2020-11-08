@@ -2,6 +2,7 @@
 const express = require('express');
 const app = express();
 const config = require('./config');
+const fetch = require('node-fetch')
 
 app.use(express.static(__dirname + '/public'));
 app.use(express.json());
