@@ -41,12 +41,3 @@ exports.createJoke = function (setup,punchline) {
 exports.getOtherSites = function () {
     return get(jokeserviceURL);
 };
-
-exports.getBeskedMax = function () {
-    return Besked.findOne().sort('-nr').exec();
-};
-
-exports.deleteBesked = function(nr){
-    return Besked.deleteOne().where('nr').eq(nr).exec()
-}
-

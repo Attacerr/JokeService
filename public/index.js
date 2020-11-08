@@ -13,17 +13,17 @@ async function getText(url) {
     return await respons.text();
 }
 
-async function generateUserTable(companies) {
-    let template = await getText('/companies.hbs');
+async function generateJokes(jokes) {
+    let template = await getText('/jokes.hbs');
     let compiledTemplate = Handlebars.compile(template);
-    return compiledTemplate({companies});
+    return compiledTemplate({jokes});
 }
-async function generateUserTable2() {
-    let companies = await get('/api/jokes');
-    let template = await getText('/companies.hbs');
+async function generateJokes2() {
+    let apijokes = await get('/api/jokes');
+    let template = await getText('/jokes.hbs');
     let compiledTemplate = Handlebars.compile(template);
     let jokes = document.querySelector("#jokes")
-    jokes.innerHTML = compiledTemplate({companies})
+    jokes.innerHTML = compiledTemplate({apijokes})
 }
 
 async function generateSites(sites) {
@@ -42,9 +42,9 @@ async function postJoke(){
     setup.value=""
     punchline.value=""
 
-    let companies = await get('/api/jokes');
+    let apijokes = await get('/api/jokes');
     let jokes = document.querySelector("#jokes")
-    jokes.innerHTML = await generateUserTable(companies);
+    jokes.innerHTML = await generateJokes(apijokes);
 
 }
 async function post(url, objekt) {
@@ -71,7 +71,7 @@ async function changeSite(){
     let jokes = document.querySelector("#jokes")
     try {
         let otherjokes = await get('/api/otherjokes/'+siteSelect)
-        jokes.innerHTML = await generateUserTable(otherjokes)
+        jokes.innerHTML = await generateJokes(otherjokes)
     } catch (er) {
         jokes.innerHTML = er
     }
@@ -79,9 +79,9 @@ async function changeSite(){
 
 async function main() {
     try {
-        let companies = await get('/api/jokes');
+        let apijokes = await get('/api/jokes');
         let jokes = document.querySelector("#jokes")
-        jokes.innerHTML = await generateUserTable(companies);
+        jokes.innerHTML = await generateJokes(apijokes);
 
         let sites = await get('/api/othersites')
         let sitesID = document.querySelector('#otherSites')
