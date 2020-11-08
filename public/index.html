@@ -1,0 +1,32 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Joke service</title>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <h1>TITEL</h1>
+    <div>
+        <h2>Write a joke</h2>
+        <label for="setup">Setup</label>
+        <input id="setup" type="text">
+    </div>
+    <div>
+        <label for="punchline">Punchline</label>
+        <input id="punchline" type="text">
+    </div>
+    <div><input id="postButton" onclick="postJoke()" type="button" value="Gem Joke"></div>
+    <div><h2>Select another site</h2></div>
+    <div id="otherSites"></div>
+    <div><input id="returnButton" onclick="generateUserTable2()" type="button" value="go to /."></div>
+    <div><h2>Jokes</h2></div>
+    <div id="jokes"></div>
+
+    
+
+</body>
+</html>
