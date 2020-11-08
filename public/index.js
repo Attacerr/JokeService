@@ -18,13 +18,6 @@ async function generateJokes(jokes) {
     let compiledTemplate = Handlebars.compile(template);
     return compiledTemplate({jokes});
 }
-async function generateJokes2() {
-    let apijokes = await get('/api/jokes');
-    let template = await getText('/jokes.hbs');
-    let compiledTemplate = Handlebars.compile(template);
-    let jokes = document.querySelector("#jokes")
-    jokes.innerHTML = compiledTemplate({apijokes})
-}
 
 async function generateSites(sites) {
     let template = await getText('/sites.hbs');
